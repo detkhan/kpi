@@ -5,7 +5,7 @@ Class MyDatabase
   {
     $server="localhost";
     $user="root";
-    $pass="000000";
+    $pass="maysalon007";
     $database="kpi";
     $this->con=mysqli_connect($server,$user,$pass,$database);
   }//function MyDatabase

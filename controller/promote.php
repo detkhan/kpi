@@ -8,7 +8,7 @@ $check_promote=$promote->checkPromote($employee_id);
 if($check_promote=="true"){
   ?>
   <script type="text/javascript">
-    window.location="../dashboard.php";
+    window.location="dashboard.php?page=listcriteria";
   </script>
   <?php
   exit();

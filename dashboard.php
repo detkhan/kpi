@@ -1,9 +1,7 @@
 <?php
-@session_start();
-//require_once("process/dashboard.php");
-require_once("process/inc/secrets.php");
-require_once("include/function.php");
-dbconn();
+session_start();
+require_once("controller/dashboard.php");
+$page=$_GET[page];
 ?>
 <!DOCTYPE html>
 <html>
@@ -146,45 +144,16 @@ dbconn();
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
-                        <div class="header">
-                            <h2>UPGRADE YOUR LEVEL</h2>
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Criteria</th>
-                                            <th>Status</th>
-                                            <th>Approver</th>
-                                            <th>Progress</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    /*
-                                    $sql = "SELECT c.id,c.criteria,c.approver_id,c.progress,c.status,c.color, a.name FROM criteria c LEFT JOIN account a ON c.employee_id=a.employee_id WHERE c.employee_id = $_SESSION[mysession_employee_id]";
-                                    $query = mysql_query($sql) or die ("ไม่สามารถ Query ข้อมูลได้ 101");
-                                    $i=1;
-                                    WHILE($row = mysql_fetch_array($query)){ ?>
-                                        <tr>
-                                            <td><?=$i?></td>
-                                            <td><?=$row["criteria"]?></td>
-                                            <td><span class="label <?=$row["color"]?>"><?=$row["status"]?></span></td>
-                                            <td><?=$row["approver"]?><?=$row["name"]?></td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar <?=$row["color"]?>" role="progressbar" aria-valuenow="<?=$row["progress"];?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$row["progress"];?>%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php $i++;} */?>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+<?php
+switch ($page) {
+  case 'listcriteria':
+include('listcriteria.php');
+    break;
+  default:
+    # code...
+    break;
+}
+ ?>
                     </div>
                 </div>
                 <!-- #END# Task Info -->

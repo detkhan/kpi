@@ -20,7 +20,7 @@ public function checkPromote($employee_id)
 public function addPromote($employee_id,$position)
 {
   $clsMyDB = new MyDatabase();
-  $strinsert ="INSERT INTO  user(employee_id,position,status) VALUES ('$employee_id','$position','not')";
+  $strinsert ="INSERT INTO  promote(employee_id,position,status) VALUES ('$employee_id','$position','not')";
   $objInsert = $clsMyDB->fncInsertRecord($strinsert);
 }
 

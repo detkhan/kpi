@@ -70,17 +70,21 @@ include("controller/promote.php");
                              <h2>UPGRADE YOUR LEVEL</h2>
                          </div>
                          <div class="body">
-<form action="controller/add_promote.php" id="add_promote" method="POST">
-  <select>
-    <option value="" disabled selected>Choose your promote</option>
-    <option value="1">Manager</option>
-    <option value="2">Develop</option>
-    <option value="3">SEO</option>
-  </select>
-  <div class="col-xs-4">
+                           <div class="row">
+  <div class="col-md-12"><form action="controller/add_promote.php" id="add_promote" method="POST">
+    <select name="position">
+      <option value="" disabled selected>Choose your promote</option>
+      <option value="Manager">Manager</option>
+      <option value="Develop">Develop</option>
+      <option value="SEO">SEO</option>
+    </select></div>
+  <div class="col-md-12"><div class="col-xs-4">
       <button class="btn btn-block bg-orange waves-effect" type="submit">SUBMIT</button>
   </div>
-  </form>
+  </form></div>
+</div>
+
+
                          </div>
                      </div>
                  </div>
