@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("controller/check_session.php");
 require_once("controller/dashboard.php");
 $page=$_GET[page];
 ?>
@@ -20,21 +21,14 @@ $page=$_GET[page];
 
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
-
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
 </head>
 
 <body class="theme-red">
@@ -83,37 +77,42 @@ $page=$_GET[page];
             <!-- Widgets -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-expand-effect">
+                  <a href="dashboard.php?page=listcriteria">   <div class="info-box bg-pink hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">playlist_add_check</i>
                         </div>
-                        <div class="content">
+                       <div class="content">
                             <div class="text">SUCCESSFULLY CRITERIA</div>
                             <div class="number"><?=$data_criteria?>/<?=$data_criteria_all?></div>
                         </div>
+
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-purple hover-expand-effect">
+                    <a href="dashboard.php?page=list_inhouse_training"><div class="info-box bg-purple hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">forum</i>
                         </div>
                         <div class="content">
                             <div class="text">IN-HOUSE TRAINING LEADER</div>
-                            <div class="number">2</div>
+                            <div class="number"><?= $data_count_in_house ?></div>
                         </div>
                     </div>
+                  </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-expand-effect">
+                    <a href="dashboard.php?page=list_training_course"><div class="info-box bg-cyan hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">help</i>
                         </div>
                         <div class="content">
                             <div class="text">TRAINING COURSE 2017</div>
-                            <div class="number count-to" data-from="0" data-to="2" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number"><?= $data_count_trainning_course ?></div>
                         </div>
                     </div>
+                  </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="info-box bg-light-green hover-expand-effect">
@@ -122,7 +121,7 @@ $page=$_GET[page];
                         </div>
                         <div class="content">
                             <div class="text">TRAINING COURSE REMAINING</div>
-                            <div class="number">10,000฿</div>
+                            <div class="number"><?= number_format($data_trainning_remaining) ?>฿</div>
                         </div>
                     </div>
                 </div>
@@ -133,7 +132,7 @@ $page=$_GET[page];
                         </div>
                         <div class="content">
                             <div class="text">KPI (GOAL 80%)</div>
-                            <div class="number">70%</div>
+                            <div class="number"><?= $data_kpi ?>%</div>
                         </div>
                     </div>
                 </div>
@@ -147,11 +146,24 @@ $page=$_GET[page];
 <?php
 switch ($page) {
   case 'listcriteria':
-include('listcriteria.php');
+    include('listcriteria.php');
     break;
-  default:
-    # code...
+  case 'list_inhouse_training':
+    include('list_inhouse_training.php');
     break;
+    case 'list_training_course':
+      include('list_training_course.php');
+      break;
+      case 'add_criteria':
+        include('add_criteria.php');
+        break;
+        case 'add_in_hourse_trainning':
+          include('add_in_hourse_trainning.php');
+          break;
+          case 'add_trainning_course':
+            include('add_trainning_course.php');
+            break;
+
 }
  ?>
                     </div>
@@ -162,47 +174,24 @@ include('listcriteria.php');
         </div>
     </section>
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/morrisjs/morris.js"></script>
-
-    <!-- ChartJs -->
-    <script src="plugins/chartjs/Chart.bundle.js"></script>
-
-    <!-- Flot Charts Plugin Js -->
-    <script src="plugins/flot-charts/jquery.flot.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
-
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/index.js"></script>
 
-    <!-- Demo Js -->
-    <script src="js/demo.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
 </body>
 
 </html>

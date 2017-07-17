@@ -7,5 +7,5 @@ $promote= new promote;
 $check_promote=$promote->addPromote($employee_id,$position);
   ?>
   <script type="text/javascript">
-    window.location="../dashboard.php";
+    window.location="../dashboard.php?page=listcriteria";
   </script>

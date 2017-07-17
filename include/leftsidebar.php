@@ -13,7 +13,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="process/take_logout.php"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="controller/take_logout.php"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -24,12 +24,31 @@
                 <ul class="list">
                     <li class="header">YOUR WAY YOU CAN SEE IT.</li>
                     <li class="active">
-                        <a href="index.php">
+                        <a href="../dashboard.php?page=listcriteria">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="dashboard.php?page=add_criteria">
+                            <i class="material-icons">assignment</i>
+                            <span>Add Criteria</span>
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="dashboard.php?page=add_in_hourse_trainning">
+                          <i class="material-icons">local_library</i>
+                            <span>Add In-Hourse Trainning</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="dashboard.php?page=add_trainning_course">
+                          <i class="material-icons">school</i>
+                            <span>Add Trainning Course</span>
+                        </a>
+                    </li>
 
 
                 </ul>

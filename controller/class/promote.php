@@ -7,7 +7,6 @@ public function checkPromote($employee_id)
   $clsMyDB = new MyDatabase();
   $sqlCondition = "SELECT * FROM promote WHERE employee_id = '$employee_id' and status='not' " ;
   $objSelect = $clsMyDB->fncSelectRecord($sqlCondition);
-  echo $sqlCondition;
   if(!$objSelect)
   {
   $data="false";

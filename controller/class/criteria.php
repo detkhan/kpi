@@ -43,7 +43,25 @@ $data=$objSelect;
 return $data;
   }
 
+
+public function addCriteria($criteria,$status,$color,$employee_id)
+{
+  $clsMyDB = new MyDatabase();
+  $strinsert ="INSERT INTO  criteria(employee_id,criteria,approver_id,progress,status,color) VALUES ('$employee_id','$criteria','1','0','$status','$color')";
+  $objInsert = $clsMyDB->fncInsertRecord($strinsert);
 }
+
+public function calculateKpi($data_criteria,$data_criteria_all)
+{
+if ($data_criteria_all==0) {
+$data=0;
+}else {
+$data=$data_criteria/$data_criteria_all;
+}
+return $data;
+}
+
+}//class
 
 
 
