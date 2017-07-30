@@ -23,7 +23,15 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">YOUR WAY YOU CAN SEE IT.</li>
+                    <?php
+if ($page=="listcriteria") {
+  # code...
+
+                    ?>
                     <li class="active">
+                      <?php
+}
+                       ?>
                         <a href="dashboard.php?page=listcriteria">
                             <i class="material-icons">home</i>
                             <span>Home</span>
@@ -34,12 +42,30 @@
 if($account_type=="admin"){
                      ?>
                      <li>
+                       <?php
+   if ($page=="listemployee") {
+     # code...
+
+                       ?>
+                       <li class="active">
+                         <?php
+   }
+                          ?>
                          <a href="dashboard.php?page=listemployee">
                              <i class="material-icons">assignment</i>
                              <span>Employee</span>
                          </a>
                      </li>
                     <li>
+                      <?php
+  if ($page=="listposition") {
+    # code...
+
+                      ?>
+                      <li class="active">
+                        <?php
+  }
+                         ?>
                         <a href="dashboard.php?page=listposition">
                             <i class="material-icons">assignment</i>
                             <span>Position</span>
@@ -49,19 +75,7 @@ if($account_type=="admin"){
 <?php
 }
  ?>
-                    <li>
-                        <a href="dashboard.php?page=add_in_hourse_trainning">
-                          <i class="material-icons">local_library</i>
-                            <span>Add In-House Trainning</span>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a href="dashboard.php?page=add_trainning_course">
-                          <i class="material-icons">school</i>
-                            <span>Add Trainning Course</span>
-                        </a>
-                    </li>
 
 
                 </ul>

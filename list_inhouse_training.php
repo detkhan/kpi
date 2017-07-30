@@ -1,5 +1,6 @@
 <?php
-$data_list_in_house=$obj_trainning->listInHouse();
+$employee_id = $_SESSION['employee_id'];
+$data_list_in_house=$obj_trainning->listInHouse($employee_id);
 $totaldata=count($data_list_in_house);
 if($totaldata>0){
  ?>

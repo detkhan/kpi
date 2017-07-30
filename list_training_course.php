@@ -1,5 +1,6 @@
 <?php
-$data_list_trainning_course=$obj_trainning->listTrainningCourse();
+$employee_id = $_SESSION['employee_id'];
+$data_list_trainning_course=$obj_trainning->listTrainningCourse($employee_id);
 $totaldata=count($data_list_trainning_course);
 if($totaldata>0){
  ?>

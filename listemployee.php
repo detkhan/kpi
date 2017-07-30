@@ -61,6 +61,7 @@ $check_promote=$promote->checkPromotePosition($user_list[$i][employee_id]);
                        <th>#</th>
                        <th>Criteria</th>
                        <th>Status</th>
+                       <th>Approve</th>
                        <th>Progress</th>
                        <th>Edit</th>
                    </tr>
@@ -73,6 +74,7 @@ $check_promote=$promote->checkPromotePosition($user_list[$i][employee_id]);
                      <td><?= ($ii+1) ?></td>
                      <td><?=$data_criteria_list_One[$ii]["criteria_detail"]?></td>
                      <td><span class="label <?=$data_criteria_list_One[$ii]["color"]?>"><?=$data_criteria_list_One[$ii]["status"]?></span></td>
+                     <td><?=$data_criteria_list_One[$ii]["name"]?></td>
                      <td>
                          <div class="progress">
                              <div class="progress-bar <?=$data_criteria_list_One[$ii]["color"]?>" role="progressbar" aria-valuenow="<?=$data_criteria_list_One[$ii]["progress"];?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$data_criteria_list_One[$ii]["progress"];?>%"></div>
@@ -84,7 +86,7 @@ $check_promote=$promote->checkPromotePosition($user_list[$i][employee_id]);
                  </tr>
                  <?php
 }//for2
-}//if have promote
+}//if have data_criteria_list_One
                   ?>
                </tbody>
            </table>
@@ -94,6 +96,103 @@ $check_promote=$promote->checkPromotePosition($user_list[$i][employee_id]);
        <?php
      }
         ?>
+
+
+        <div class="row">
+       <div class="col-md-12">
+<a class="btn btn-primary" href="dashboard.php?page=add_in_house_tranning&employee_id=<?= $user_list[$i][employee_id]    ?>" role="button">Add In House_Tranning</a>
+</div>
+</div>
+        <?php
+        $data_in_house=$obj_trainning->listInHouse($user_list[$i][employee_id]);
+        if($data_in_house !="No data"){
+         ?>
+
+        <div class="table-responsive">
+            <table class="table table-hover dashboard-task-infos">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>In House Tranning Name</th>
+                        <th>Date</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                for ($iii=0; $iii <sizeof($data_in_house) ; $iii++) {
+                  ?>
+                  <tr>
+                      <td><?= ($iii+1) ?></td>
+                      <td><?=$data_in_house[$iii]["in_house_train_name"]?></td>
+                      <td><?=$data_in_house[$iii]["in_house_train_day"]?></td>
+                      <td>
+                        <a class="btn btn-info btn-sm" href="dashboard.php?page=edit_in_house_train&id=<?= $data_in_house[$iii]["in_house_train_id"] ?>" role="button">Edit</a>
+                       </td>
+                  </tr>
+                  <?php
+ }//for3
+                   ?>
+                </tbody>
+            </table>
+
+        </div>
+
+        <?php
+      }//if have tranning
+         ?>
+
+
+
+
+         <div class="row">
+        <div class="col-md-12">
+         <a class="btn btn-primary" href="dashboard.php?page=add_in_house_tranning&employee_id=<?= $user_list[$i][employee_id]    ?>" role="button">Add Tranning Course</a>
+       </div>
+       </div>
+                 <?php
+                 $data_trainning_course=$obj_trainning->listTrainningCourse($user_list[$i][employee_id]);
+                 if($data_trainning_course !="No data"){
+                  ?>
+
+                 <div class="table-responsive">
+                     <table class="table table-hover dashboard-task-infos">
+                         <thead>
+                             <tr>
+                                 <th>#</th>
+                                 <th>Tranning Course Name</th>
+                                 <th>Date</th>
+                                 <th>Cost</th>
+                                 <th>Edit</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                         <?php
+                         for ($iiii=0; $iiii <sizeof($data_trainning_course) ; $iiii++) {
+                           ?>
+                           <tr>
+                               <td><?= ($iiii+1) ?></td>
+                               <td><?=$data_trainning_course[$iiii]["train_course_name"]?></td>
+                               <td><?=$data_trainning_course[$iiii]["train_course_day"]?></td>
+                               <td><?=$data_trainning_course[$iiii]["train_course_cost"]?></td>
+                               <td>
+                                 <a class="btn btn-info btn-sm" href="dashboard.php?page=edit__training_couse&id=<?= $data_trainning_course[$iiii]["in_house_train_id"] ?>" role="button">Edit</a>
+                                </td>
+                           </tr>
+                           <?php
+          }//for3
+                            ?>
+                         </tbody>
+                     </table>
+
+                 </div>
+
+                 <?php
+               }//if have tranning
+                  ?>
+
+
+
 
      <div class="row">
     <div class="col-md-12">

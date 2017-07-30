@@ -22,10 +22,9 @@ public function countInHouse()
 }
 
 
-public function listInHouse()
+public function listInHouse($employee_id)
 {
   $year=date("Y");
-  $employee_id = $_SESSION['employee_id'];
   $clsMyDB = new MyDatabase();
   $sqlCondition = "SELECT *  FROM in_house_train WHERE employee_id ='$employee_id' and year(in_house_train_day)='$year'";
   $objSelect = $clsMyDB->fncSelectRecord($sqlCondition);
@@ -66,10 +65,9 @@ public function countTrainningCourse()
   return $data;
 }
 
-public function listTrainningCourse()
+public function listTrainningCourse($employee_id)
 {
   $year=date("Y");
-  $employee_id = $_SESSION['employee_id'];
   $clsMyDB = new MyDatabase();
   $sqlCondition = "SELECT *  FROM train_course WHERE employee_id ='$employee_id' and year(train_course_day)='$year'";
   $objSelect = $clsMyDB->fncSelectRecord($sqlCondition);
