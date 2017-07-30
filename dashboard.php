@@ -77,7 +77,7 @@ $page=$_GET[page];
             <!-- Widgets -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                  <a href="dashboard.php?page=listcriteria">   <div class="info-box bg-pink hover-expand-effect">
+                  <a href="dashboard.php?page=listcriteria" style="text-decoration:none;">   <div class="info-box bg-pink hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">playlist_add_check</i>
                         </div>
@@ -91,7 +91,7 @@ $page=$_GET[page];
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a href="dashboard.php?page=list_inhouse_training"><div class="info-box bg-purple hover-expand-effect">
+                    <a href="dashboard.php?page=list_inhouse_training" style="text-decoration:none;"><div class="info-box bg-purple hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">forum</i>
                         </div>
@@ -103,7 +103,7 @@ $page=$_GET[page];
                   </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a href="dashboard.php?page=list_training_course"><div class="info-box bg-cyan hover-expand-effect">
+                    <a href="dashboard.php?page=list_training_course" style="text-decoration:none;"><div class="info-box bg-cyan hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">help</i>
                         </div>
@@ -144,28 +144,10 @@ $page=$_GET[page];
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
 <?php
-switch ($page) {
-  case 'listcriteria':
-    include('listcriteria.php');
-    break;
-  case 'list_inhouse_training':
-    include('list_inhouse_training.php');
-    break;
-    case 'list_training_course':
-      include('list_training_course.php');
-      break;
-      case 'add_criteria':
-        include('add_criteria.php');
-        break;
-        case 'add_in_hourse_trainning':
-          include('add_in_hourse_trainning.php');
-          break;
-          case 'add_trainning_course':
-            include('add_trainning_course.php');
-            break;
-
-}
+    include($page.'.php');
+    echo $_GET['text'];
  ?>
+
                     </div>
                 </div>
                 <!-- #END# Task Info -->

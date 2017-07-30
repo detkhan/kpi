@@ -77,28 +77,51 @@ require_once("controller/promote.php");
                 <!-- Task Info -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
+                      <?php
+                      for ($i=0; $i <sizeof($check_position) ; $i++) {
+                       ?>
+                      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-<form class="form-horizontal" action="controller/add_promote.php" id="add_promote" method="POST">
-  <div class="body">
 
-    <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Promote Position</label>
-    <div class="col-sm-10">
-      <select class="form-control" name="position">
-        <option value="" disabled selected>Choose your promote</option>
-        <option value="Manager">Manager</option>
-        <option value="Develop">Develop</option>
-        <option value="SEO">SEO</option>
-  </select>
-    </div>
-  </div>
-  <div class="col-md-12"><div class="col-xs-4">
-      <button class="btn btn-block bg-orange waves-effect" type="submit">SUBMIT</button>
-  </div>
-      </div>
-      </div>
-        </form>
-      </div>
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $i ?>"  <?= ($i==0)?'aria-expanded="true" ':' class="collapsed" aria-expanded="false"' ?>  aria-controls="collapse<?= $i ?>">
+                                <?=  $check_position[$i]['position_name'] ?>
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapse<?= $i ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?= $i ?>">
+                        <div class="panel-body">
+                        <?php
+                        $dataCriteriaDetail=$criteria->getCriteriaDetail($check_position[$i]['position_id']);
+
+                         ?>
+                        <!-- List group -->
+                        <ul class="list-group">
+                          <?php
+                          for ($ii=0; $ii <sizeof($dataCriteriaDetail) ; $ii++) {
+                           ?>
+                          <li class="list-group-item"><?=  $dataCriteriaDetail[$ii]['criteria_detail'] ?></li>
+                          <?php
+                          $position_criteria_id[]=$dataCriteriaDetail[$ii]['position_criteria_id'];
+                          $criteria_detail[]=$dataCriteriaDetail[$ii]['criteria_detail'];
+                          $approver_id[]=$dataCriteriaDetail[$ii]['approver_id'];
+                        }//for2
+                           ?>
+                        </ul>
+                        <div class="panel-footer"><a class="btn btn-default" href="controller/add_promote.php?position_id=<?= $check_position[$i]['position_id'] ?>&position_criteria_id=<?= urlencode(serialize($position_criteria_id)) ?>&criteria_detail=<?= urlencode(serialize($criteria_detail)) ?>&approver_id=<?= urlencode(serialize($approver_id)) ?>" role="button">Promote</a></div>
+                      </div><!-- panel-body   -->
+                      </div><!-- collapseOne   -->
+                      </div><!-- panel panel-default  -->
+<?php
+}//end for
+ ?>
+
+                      </div><!-- panel-group   -->
+
+      </div><!-- card   -->
   </div>
   <!-- #END# Task Info -->
 

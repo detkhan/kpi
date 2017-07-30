@@ -8,6 +8,7 @@ Class MyDatabase
     $pass="000000";
     $database="kpi";
     $this->con=mysqli_connect($server,$user,$pass,$database);
+    $this->conset=mysqli_set_charset($this->con,'UTF8');
   }//function MyDatabase
 
   function fncInsertRecord($strinsert)

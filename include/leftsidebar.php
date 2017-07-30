@@ -8,7 +8,7 @@
                 </div>
                 <div class="info-container">
 
-                    <div class="name"><?= $_SESSION['name'] ?></div>
+                    <div class="name"><?= $_SESSION['name'] ?>(<?= $_SESSION['position_name'] ?>)</div>
                     <div class="email"><?= $_SESSION['username'] ?></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -24,22 +24,35 @@
                 <ul class="list">
                     <li class="header">YOUR WAY YOU CAN SEE IT.</li>
                     <li class="active">
-                        <a href="../dashboard.php?page=listcriteria">
+                        <a href="dashboard.php?page=listcriteria">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
+                    <?php
+                    $account_type=$_SESSION['account_type'];
+if($account_type=="admin"){
+                     ?>
+                     <li>
+                         <a href="dashboard.php?page=listemployee">
+                             <i class="material-icons">assignment</i>
+                             <span>Employee</span>
+                         </a>
+                     </li>
                     <li>
-                        <a href="dashboard.php?page=add_criteria">
+                        <a href="dashboard.php?page=listposition">
                             <i class="material-icons">assignment</i>
-                            <span>Add Criteria</span>
+                            <span>Position</span>
                         </a>
                     </li>
 
+<?php
+}
+ ?>
                     <li>
                         <a href="dashboard.php?page=add_in_hourse_trainning">
                           <i class="material-icons">local_library</i>
-                            <span>Add In-Hourse Trainning</span>
+                            <span>Add In-House Trainning</span>
                         </a>
                     </li>
 

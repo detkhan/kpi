@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("class/user.php");
+require_once('class/user.php');
+
+
 $username = $_POST["username"];
 $password = SHA1($_POST["password"]);
 $user= new user;
@@ -14,7 +16,7 @@ if ($user_login=="success") {
 } else {
   ?>
   <script type="text/javascript">
-    window.location="../index.php";
+    window.location="../index.php?error=1";
   </script>
   <?php
 }
